@@ -1,0 +1,464 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="QAMaster.Master.cs" Inherits="CicPortal.QAMaster" %>
+<%@ Import Namespace="CicPortal" %>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+  
+
+    <title> Commission for University Education</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <style>
+#myProgress {
+  width: 100%;
+  background-color: #ddd;
+}
+
+#myBar {
+  width: 10%;
+  height: 30px;
+  background-color: #4CAF50;
+  text-align: center;
+  line-height: 30px;
+  color: white;
+}
+</style> 
+     <style>
+      input.larger { 
+      transform: scale(5); 
+      margin: 30px;
+      } 
+    </style>
+      <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="../vendor/toastr/toastr.min.css">
+    <link rel="stylesheet" href="../vendor/fullcalendar/fullcalendar.css">
+    <script src="../vendor/fullcalendar/lib/moment.min.js"></script> 
+    <script src="../vendor/fullcalendar/lib/jquery-ui.custom.min.js"></script> 
+    <script src="../vendor/fullcalendar/fullcalendar.min.js"></script> 
+    <script src="../vendor/toastr/toastr.min.js"></script> 
+    <link rel="stylesheet" href="../vendor/select2/dist/css/select2.min.css">
+    <link rel="stylesheet" href="../vendor/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+     <link href="../dataTables/dataTables.bootstrap.css" rel="stylesheet">
+    <script type="text/javascript" src="js/loader.js"></script>
+        <!-- DataTables Responsive CSS -->
+        <link href="../dataTables/dataTables.responsive.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/tonystar/bootstrap-float-label/v3.0.1/dist/bootstrap-float-label.min.css"/>
+    <script type="text/javascript">
+        function showToast(mytoastclass, message) {
+            var toastclass = mytoastclass;
+            msg = message;
+            toastr.options.showDuration = 300;
+            toastr.options.hideDuration = 200;
+            toastr.options.timeOut = 5000;
+            toastr.options.extendedTimeOut = 1000;
+            toastr.options.showEasing = "swing";
+            toastr.options.hideEasing = "linear";
+            toastr.options.showMethod = "fadeIn";
+            toastr.options.hideMethod = "fadeOut";
+            toastr.options.tapToDismiss = true;
+
+            $('#toastrOptions').text('Command: toastr[toastclass]("'
+                + msg
+                + ("")
+                + '")\n\ntoastr.options = '
+                + JSON.stringify(toastr.options, null, 2)
+            );
+
+            var $toast = toastr[toastclass](msg, ''); // Wire up an event handler to a button in the toast, if it exists
+        }
+
+    </script> 
+    <style>
+  
+          .contributionsList {
+            background-color: #F8F8F8;
+            list-style: none; 
+            width: 100%;
+        }
+		.contributionsList li:hover {
+		cursor: pointer;
+		background-color: #D3D3D3;
+		}
+        .contributionsList li {
+            padding: 9px;
+            border-bottom: 1px solid #e7e7e7;
+            font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+            font-size: 14px;
+            line-height: 1.42857143;
+            color: #333;
+
+        }
+        #languages {
+            background-color: #F8F8F8;
+        }
+        #languages li {
+            padding: 9px;
+            border-bottom: 1px solid #e7e7e7;
+            font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+            font-size: 14px;
+            line-height: 1.42857143;
+            color: #333;
+
+        }
+        #datepicker{z-index:9999 !important}
+        @media screen and (max-width:629px){
+            #fullname {
+                
+                display: none;
+            }
+       
+        }
+        @media screen and (min-width:630px){
+            #shortname {
+                
+                display: none;
+            }
+       
+        }
+        .switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+        .fc-day-grid-event .fc-content {
+    white-space: nowrap;
+    overflow: hidden;
+    background-color: #1E83D1;
+    color: #FFFFFF;
+}
+        
+/* Hide default HTML checkbox */
+.switch input {display:none;}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #AB162B;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #AB162B;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+    </style>
+     <link href="images/logo.png" rel="shortcut icon" type="image/x-icon" />
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap-float-label.css"/>
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="../vendor/morrisjs/morris.css" rel="stylesheet">
+
+
+    <!-- Custom Fonts -->
+    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="CustomCss/CustomCss.css" rel="stylesheet" />
+    <link href="CustomCss/sweetalert.css" rel="stylesheet" />
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+    <form runat="server" enctype="multipart/form-data" >
+        <div id="wrapper">
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0; background-color: #0000fe; color: #FFFFFF; background-image:url('images/cue-header.jpg');background-size: 1250px 65px;height:61px;background-repeat: no-repeat;"">
+            <div class="navbar-header"> 
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+               <%--   <img src="images/cue-header.jpg" height="50" width="1242"/>--%>
+            <%--  <h4 style="color: #ffffff;">University Education Management Information System (UEMIS)</h4>--%>
+             <%--<img src="images/cue-header.jpg" height="20%" width="100%"/>--%>
+            </div>
+          
+            <!-- /.navbar-header -->
+            <ul class="nav navbar-top-links navbar-right">
+                <!-- /.dropdown -->
+                <!-- <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-bell fa-fw" style="color: white;"></i> <i class="fa fa-caret-down" style="color: white;"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-alerts">
+                        <li class="divider"></li>
+                        <li class="divider"></li>
+                       <li>
+                            <a class="text-center" href="Notifications.aspx">
+                            <strong>See All Notifications</strong>
+                            <i class="fa fa-angle-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-alerts 
+               </li> -->
+               
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: white;">
+                        <i class="fa fa-user fa-fw fa-1x"></i><% =Session["Name"] %> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <!--<li><a href="Profile.aspx"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        </li>-->
+                      <li><a href="Settings.aspx"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="Logout.aspx"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
+
+            <div class="navbar-default sidebar" role="navigation" >
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                       <li style="background-color: #F9BE00; height: 100px; text-align: center; vertical-align: text-top; padding-top: 20px;">
+                           <label><% =Session["Name"] %></label><br/>
+                           <label><% =Session["UniversityName"] %></label><br/>
+                           <label><%=Session["UserType"] %></label>
+                       </li>
+                        <%
+
+                            if (Convert.ToString(Session["type"]) == "old")
+                            {
+                        %>
+                        <li><a href="ChooseService.aspx"><i class="fa fa-dashboard fa-fw"></i> Choose Service</a></li>  
+                         <li><a href="QualityAuditApproval.aspx"><i class="fa fa-check fa-fw"></i>Approvals</a></li>
+                        <li>
+                            <a href="#"><i class="fa fa-th fa-fw"></i>Institutional Quality Audit<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+<%--                            <li>
+                                <a href="#"><i class="fa fa-building fa-fw"></i>Quality Audit Invitation<span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li><a href="AuditRequisitions.aspx">Active Invitations</a></li>
+                                    <li><a href="ClosedQAinvitations.aspx">Closed Invitations</a></li>
+                                </ul>                              
+                            </li>--%>
+                            <li><a href="Downloads/Guidelines for SAR.pdf"><i class="fa fa-download fa-fw"></i>Guidelines for SAR</a></li>
+                            <li>
+                                <a href="#"><i class="fa fa-building fa-fw"></i>Self Assessment Report<span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li><a href="InstitutionalQAPreamble.aspx">Active Self Assessment Report</a></li>
+                                    <li><a href="ReSubmitSAR">SAR Request for Re-Submission</a></li>
+                                    <li><a href="SubmittedQASAR.aspx">Submitted Self Assessment Report</a></li>
+
+                                </ul>                              
+                            </li>
+                            <%--<li><a href="ProposedTeam.aspx"><i class="fa fa-building fa-fw"></i>Proposed Audit Team</a></li>--%>
+                            <li><a href="OpenCorrectionOfFuctualErrors.aspx"><i class="fa fa-building fa-fw"></i>Correction Of Factual Errors</a></li>
+                             <li>
+                                <a href="#"><i class="fa fa-building fa-fw"></i> Roadmap For Corrective Actions<span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li><a href="AuditRoadmap.aspx">Open Audit Roadmap</a></li>
+                                    <li><a href="SubmittedInstitutionAuditRoadmap.aspx">Submitted Audit Roadmap</a></li>
+                                </ul>                              
+                            </li>   
+                         <li><a href="CompletedAudits.aspx"><i class="fa fa-building fa-fw"></i>Completed Audits</a></li>
+                            </ul>                              
+                        </li>
+
+                        <!--Programme QA-->
+                         <li>
+                            <a href="#"><i class="fa fa-th fa-fw"></i>Programme Quality Audit<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+ <%--                           <li>
+                                <a href="#"><i class="fa fa-building fa-fw"></i>Quality Audit Invitation<span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li><a href="ProgrammeAuditRequisitions.aspx">Open Invitations</a></li>
+                                    <li><a href="ProgrammeClosedQAinvitations.aspx">Closed Invitations</a></li>
+                                </ul>                              
+                            </li>--%>
+                            <li><a href="Downloads/2022 Edition  - GUIDELINES FOR PROGRAMME QUALITY AUDIT.pdf"><i class="fa fa-download fa-fw"></i>Guidelines for SAR</a></li>
+                            <li>
+                                <a href="#"><i class="fa fa-building fa-fw"></i>Self Assessment<span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li><a href="ProgrammeQAPreamble.aspx">Active Self Assessment</a></li>
+                                    li><a href="#">SAR Request for Re-Submission</a></li>
+                                    <li><a href="ProgrammeSubmittedQASAR.aspx">Submitted Self Assessment</a></li>
+                                </ul>                              
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-building fa-fw"></i>Correction Of Factual Errors<span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li><a href="OpenCorrectionOfFuctualErrors.aspx">Open Correction Of Factual Errors</a></li>
+                                    <li><a href="ClosedFuctualErrors.aspx">Submitted Correction Of Factual Errors</a></li>
+                                </ul>                              
+                            </li>
+                         <li>
+                                <a href="#"><i class="fa fa-building fa-fw"></i> Roadmap For Corrective Actions<span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li><a href="ProgrammeAuditRoadmap.aspx">Open Audit Roadmap</a></li>
+                                    <li><a href="SubmittedProgrammeAuditRoadmap.aspx">Submitted Audit Roadmap</a></li>
+                                </ul>                              
+                            </li>   
+                         <li><a href="CompletedAudits.aspx"><i class="fa fa-building fa-fw"></i>Completed Audits</a></li>
+                            </ul>                              
+                        </li>
+                                                <li>
+                                <a href="#"><i class="fa fa-desktop"></i>Help Desk         <%--  <span class="pull-right-container">
+                                <small class="label pull-right bg-blue">NEW</small>
+                            </span>--%></a>
+                                <ul class="nav nav-second-level">
+                                    <li><a href="DataCollectionHelpDesk.aspx"><i class="fa fa-plus"></i>New Request</a></li>
+                                    <li><a href="DataCollectionHelpDeskSubmitted.aspx"><i class="fa fa-send"></i>Submitted Requests</a></li>
+                                    <li><a href="DataCollectionHelpDeskResolved.aspx"><i class="fa fa-check"></i>Resolved Requests</a></li>
+                                </ul>
+                            </li>
+
+                        <%--<li><a href="ProgrammeQAPreamble.aspx"><i class="fa fa-th fa-fw"></i>Programme Quality Audit</a></li>--%>
+                        <%--<li><a href="ProgrammeQAPreamble.aspx"> <i class="fa fa-check fa-fw"></i> Program Quality Audit</a></li>--%>
+                         <li> <a href="Campuses.aspx"><i class="fa fa-building fa-fw"></i>Campuses</a></li>
+                         <li><a href="AccreditedPrograms.aspx">Accredited Programs</a></li> 
+                        <li>
+                                <a href="#"><i class="fa fa-users fa-fw"></i> University Profile<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li><a href="VisionMission.aspx">Vision, Mission, Aims and Objectives</a></li>
+                                    <li><a href="History.aspx">Brief History</a></li>
+                                    <li><a href="KeyMilestones.aspx">Key Milestones</a></li>
+                                    <li><a href="Affliations.aspx">Affliations and Linkages</a></li>
+                                    <li><a href="UniversityNiche.aspx">Philosophical Basis/Niche of the University</a></li>
+                                    <li><a href="Schools.aspx">Schools/Faculties/Institutes</a></li>
+                                    <li><a href="Departments.aspx">Departments</a></li>
+                                    <li><a href="Sponsors.aspx">Sponsors</a></li>
+                                    <li><a href="Organogram.aspx">Management Organogram</a></li>
+                                    <li><a href="Chancellors.aspx">University Chancellors</a></li>
+                                </ul>
+                              
+                            </li>
+
+                        <%
+                            } %>
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+
+        <div id="page-wrapper">
+            <div class="row">
+                <br/>
+                <div  style="padding-bottom: 10px;">
+                 <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+                    </div>
+                  <div style="background-color: #168c14; color: #FFFFFF; padding: 10px;">
+                <p >
+                    <label style="display: inline;">Copyright &copy <%: DateTime.Now.Year %> Commission for University Education(CUE) All rights reserved.</label>
+                    <label style="display: inline; color: #FFFFFF;" class="pull-right;">   <a href="http://www.dynasoft.co.ke" class="pull-right" runat="server" style="color: #FFFFFF;" >Design and Developed by Dynasoft Business Solutions Ltd</a></label>
+                </p>
+            </div> 
+        </div>
+        <!-- /#page-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+    <!-- jQuery -->
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="../vendor/metisMenu/metisMenu.min.js"></script>
+    <!-- Morris Charts JavaScript -->
+    <script src="../vendor/raphael/raphael.min.js"></script>
+    <script src="../vendor/morrisjs/morris.min.js"></script>
+    <script src="../data/morris-data.js"></script>
+    <!-- Custom Theme JavaScript -->
+    <script src="../dist/js/sb-admin-2.js"></script>
+    <script src="../vendor/flot/excanvas.min.js"></script>
+    <script src="../vendor/flot/jquery.flot.js"></script>
+    <script src="../vendor/flot/jquery.flot.pie.js"></script>
+    <script src="../vendor/flot/jquery.flot.resize.js"></script>
+    <script src="../vendor/flot/jquery.flot.time.js"></script>
+    <script src="../vendor/select2/dist/js/select2.full.min.js"></script>
+    <script src="../vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+    <script src="../vendor/flot-tooltip/jquery.flot.tooltip.min.js"></script>
+           <script>
+               $(document).ready(function () {
+                   //$("select").select2();
+                   $('.select2').select2();
+                   $('.bootstrapdatepicker').datepicker({
+                       autoclose: true, format: 'dd/mm/yyyy'
+                   });
+                   $('.dataTable2').DataTable({
+                       responsive: true
+                   });
+
+               });
+           </script>    
+        </div>
+    </form>
+     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+     <link rel="stylesheet" href="fullcalendar/fullcalendar.css">
+     <script src="fullcalendar/lib/moment.min.js"></script> 
+     <script src="fullcalendar/lib/jquery-ui.custom.min.js"></script> 
+     <script src="fullcalendar/fullcalendar.min.js"></script> 
+     <script src="../dataTables/jquery.dataTables.min.js"></script>
+     <script src="../dataTables/dataTables.bootstrap.min.js"></script>
+<%--    <script type="text/javascript" src="http://oss.sheetjs.com/js-xlsx/xlsx.full.min.js"></script>--%>
+    <script src="js/CustomJs.js"></script>
+<%--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+    <script src="js/http_unpkg.com_sweetalert_dist_sweetalert.min.js"></script>--%>
+    <script src="CustomJs/CustomJs.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+</body>
+</html>

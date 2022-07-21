@@ -1,0 +1,385 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>D:\DYNASOFT BUSINESS SOLUTIONS\DYNASOFT PORTAL PROJECTS\PUBLISHED PORTALS</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="AcademicStaff.aspx">
+      <publishTime>11/07/2019 17:34:12</publishTime>
+    </File>
+    <File Include="AccessRoads.aspx">
+      <publishTime>11/07/2019 17:36:20</publishTime>
+    </File>
+    <File Include="Accreditation.aspx">
+      <publishTime>11/07/2019 17:42:40</publishTime>
+    </File>
+    <File Include="AccreditationMaster.Master">
+      <publishTime>11/07/2019 17:49:34</publishTime>
+    </File>
+    <File Include="AccreditedPrograms.aspx">
+      <publishTime>11/07/2019 17:49:13</publishTime>
+    </File>
+    <File Include="Affliations.aspx">
+      <publishTime>11/07/2019 17:10:08</publishTime>
+    </File>
+    <File Include="Approvals.aspx">
+      <publishTime>11/08/2019 02:39:28</publishTime>
+    </File>
+    <File Include="bin/AjaxControlToolkit.dll">
+      <publishTime>07/18/2017 17:24:30</publishTime>
+    </File>
+    <File Include="bin/CicPortal.dll">
+      <publishTime>11/21/2019 16:19:38</publishTime>
+    </File>
+    <File Include="bin/CicPortal.XmlSerializers.dll">
+      <publishTime>11/21/2019 16:19:41</publishTime>
+    </File>
+    <File Include="bin/de/Microsoft.Data.Edm.resources.dll">
+      <publishTime>07/03/2017 22:09:10</publishTime>
+    </File>
+    <File Include="bin/de/Microsoft.Data.OData.resources.dll">
+      <publishTime>07/03/2017 22:09:13</publishTime>
+    </File>
+    <File Include="bin/de/Microsoft.Data.Services.Client.resources.dll">
+      <publishTime>07/03/2017 22:09:15</publishTime>
+    </File>
+    <File Include="bin/de/System.Spatial.resources.dll">
+      <publishTime>07/03/2017 22:09:12</publishTime>
+    </File>
+    <File Include="bin/es/Microsoft.Data.Edm.resources.dll">
+      <publishTime>07/03/2017 22:09:10</publishTime>
+    </File>
+    <File Include="bin/es/Microsoft.Data.OData.resources.dll">
+      <publishTime>07/03/2017 22:09:13</publishTime>
+    </File>
+    <File Include="bin/es/Microsoft.Data.Services.Client.resources.dll">
+      <publishTime>07/03/2017 22:09:15</publishTime>
+    </File>
+    <File Include="bin/es/System.Spatial.resources.dll">
+      <publishTime>07/03/2017 22:09:12</publishTime>
+    </File>
+    <File Include="bin/fr/Microsoft.Data.Edm.resources.dll">
+      <publishTime>07/03/2017 22:09:10</publishTime>
+    </File>
+    <File Include="bin/fr/Microsoft.Data.OData.resources.dll">
+      <publishTime>07/03/2017 22:09:13</publishTime>
+    </File>
+    <File Include="bin/fr/Microsoft.Data.Services.Client.resources.dll">
+      <publishTime>07/03/2017 22:09:15</publishTime>
+    </File>
+    <File Include="bin/fr/System.Spatial.resources.dll">
+      <publishTime>07/03/2017 22:09:12</publishTime>
+    </File>
+    <File Include="bin/it/Microsoft.Data.Edm.resources.dll">
+      <publishTime>07/03/2017 22:09:10</publishTime>
+    </File>
+    <File Include="bin/it/Microsoft.Data.OData.resources.dll">
+      <publishTime>07/03/2017 22:09:14</publishTime>
+    </File>
+    <File Include="bin/it/Microsoft.Data.Services.Client.resources.dll">
+      <publishTime>07/03/2017 22:09:16</publishTime>
+    </File>
+    <File Include="bin/it/System.Spatial.resources.dll">
+      <publishTime>07/03/2017 22:09:12</publishTime>
+    </File>
+    <File Include="bin/ja/Microsoft.Data.Edm.resources.dll">
+      <publishTime>07/03/2017 22:09:10</publishTime>
+    </File>
+    <File Include="bin/ja/Microsoft.Data.OData.resources.dll">
+      <publishTime>07/03/2017 22:09:14</publishTime>
+    </File>
+    <File Include="bin/ja/Microsoft.Data.Services.Client.resources.dll">
+      <publishTime>07/03/2017 22:09:16</publishTime>
+    </File>
+    <File Include="bin/ja/System.Spatial.resources.dll">
+      <publishTime>07/03/2017 22:09:12</publishTime>
+    </File>
+    <File Include="bin/ko/Microsoft.Data.Edm.resources.dll">
+      <publishTime>07/03/2017 22:09:10</publishTime>
+    </File>
+    <File Include="bin/ko/Microsoft.Data.OData.resources.dll">
+      <publishTime>07/03/2017 22:09:14</publishTime>
+    </File>
+    <File Include="bin/ko/Microsoft.Data.Services.Client.resources.dll">
+      <publishTime>07/03/2017 22:09:16</publishTime>
+    </File>
+    <File Include="bin/ko/System.Spatial.resources.dll">
+      <publishTime>07/03/2017 22:09:12</publishTime>
+    </File>
+    <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
+      <publishTime>07/03/2017 18:16:41</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Data.Edm.dll">
+      <publishTime>07/03/2017 22:09:09</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Data.OData.dll">
+      <publishTime>07/03/2017 22:09:12</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Data.Services.Client.dll">
+      <publishTime>07/03/2017 22:09:15</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>03/09/2019 12:20:06</publishTime>
+    </File>
+    <File Include="bin/Recaptcha.dll">
+      <publishTime>12/14/2010 21:19:48</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.exe">
+      <publishTime>07/03/2017 18:16:39</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.Build.Tasks.CodeAnalysis.dll">
+      <publishTime>07/03/2017 18:16:39</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.dll">
+      <publishTime>07/03/2017 18:16:40</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.dll">
+      <publishTime>07/03/2017 18:16:40</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.VisualBasic.dll">
+      <publishTime>07/03/2017 18:16:40</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CSharp.Core.targets">
+      <publishTime>07/03/2017 18:16:40</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.VisualBasic.Core.targets">
+      <publishTime>07/03/2017 18:16:40</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Collections.Immutable.dll">
+      <publishTime>07/03/2017 18:16:40</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Reflection.Metadata.dll">
+      <publishTime>07/03/2017 18:16:40</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.exe">
+      <publishTime>07/03/2017 18:16:40</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe">
+      <publishTime>07/03/2017 18:16:41</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe.config">
+      <publishTime>07/03/2017 18:16:41</publishTime>
+    </File>
+    <File Include="bin/ru/Microsoft.Data.Edm.resources.dll">
+      <publishTime>07/03/2017 22:09:10</publishTime>
+    </File>
+    <File Include="bin/ru/Microsoft.Data.OData.resources.dll">
+      <publishTime>07/03/2017 22:09:14</publishTime>
+    </File>
+    <File Include="bin/ru/Microsoft.Data.Services.Client.resources.dll">
+      <publishTime>07/03/2017 22:09:16</publishTime>
+    </File>
+    <File Include="bin/ru/System.Spatial.resources.dll">
+      <publishTime>07/03/2017 22:09:12</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.Formatting.dll">
+      <publishTime>03/09/2019 12:20:55</publishTime>
+    </File>
+    <File Include="bin/System.Spatial.dll">
+      <publishTime>07/03/2017 22:09:11</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.dll">
+      <publishTime>03/09/2019 12:20:57</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.WebHost.dll">
+      <publishTime>03/09/2019 12:20:58</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/Microsoft.Data.Edm.resources.dll">
+      <publishTime>07/03/2017 22:09:09</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/Microsoft.Data.OData.resources.dll">
+      <publishTime>07/03/2017 22:09:13</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/Microsoft.Data.Services.Client.resources.dll">
+      <publishTime>07/03/2017 22:09:15</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Spatial.resources.dll">
+      <publishTime>07/03/2017 22:09:11</publishTime>
+    </File>
+    <File Include="bin/zh-Hant/Microsoft.Data.Edm.resources.dll">
+      <publishTime>07/03/2017 22:09:09</publishTime>
+    </File>
+    <File Include="bin/zh-Hant/Microsoft.Data.OData.resources.dll">
+      <publishTime>07/03/2017 22:09:13</publishTime>
+    </File>
+    <File Include="bin/zh-Hant/Microsoft.Data.Services.Client.resources.dll">
+      <publishTime>07/03/2017 22:09:15</publishTime>
+    </File>
+    <File Include="bin/zh-Hant/System.Spatial.resources.dll">
+      <publishTime>07/03/2017 22:09:11</publishTime>
+    </File>
+    <File Include="Buildings.aspx">
+      <publishTime>11/14/2019 13:30:08</publishTime>
+    </File>
+    <File Include="Campuses.aspx">
+      <publishTime>11/07/2019 17:08:27</publishTime>
+    </File>
+    <File Include="Chancellors.aspx">
+      <publishTime>11/07/2019 17:19:17</publishTime>
+    </File>
+    <File Include="ChooseService.aspx">
+      <publishTime>11/07/2019 17:27:33</publishTime>
+    </File>
+    <File Include="ChooseServiceMaster.Master">
+      <publishTime>11/07/2019 17:19:59</publishTime>
+    </File>
+    <File Include="Dashboard.aspx">
+      <publishTime>11/07/2019 17:06:27</publishTime>
+    </File>
+    <File Include="DataCollection.aspx">
+      <publishTime>11/07/2019 17:31:22</publishTime>
+    </File>
+    <File Include="DataCollectionMaster.Master">
+      <publishTime>11/07/2019 17:44:07</publishTime>
+    </File>
+    <File Include="Departments.aspx">
+      <publishTime>11/07/2019 17:18:23</publishTime>
+    </File>
+    <File Include="Discipline.aspx">
+      <publishTime>11/07/2019 17:36:57</publishTime>
+    </File>
+    <File Include="Finance.aspx">
+      <publishTime>10/15/2019 05:55:39</publishTime>
+    </File>
+    <File Include="FinanceDocuments.aspx">
+      <publishTime>11/07/2019 17:34:48</publishTime>
+    </File>
+    <File Include="FinanceEntries.aspx">
+      <publishTime>11/07/2019 17:34:54</publishTime>
+    </File>
+    <File Include="Fire.aspx">
+      <publishTime>11/07/2019 17:35:40</publishTime>
+    </File>
+    <File Include="ForgotPass.aspx">
+      <publishTime>03/10/2019 16:38:05</publishTime>
+    </File>
+    <File Include="Functions.aspx">
+      <publishTime>03/08/2019 11:03:28</publishTime>
+    </File>
+    <File Include="Graduation.aspx">
+      <publishTime>11/07/2019 17:35:17</publishTime>
+    </File>
+    <File Include="Graphs.aspx">
+      <publishTime>10/29/2019 03:16:59</publishTime>
+    </File>
+    <File Include="History.aspx">
+      <publishTime>11/07/2019 17:09:25</publishTime>
+    </File>
+    <File Include="Innovations.aspx">
+      <publishTime>11/07/2019 17:35:02</publishTime>
+    </File>
+    <File Include="Institution.aspx">
+      <publishTime>11/07/2019 17:49:28</publishTime>
+    </File>
+    <File Include="InstitutionalQA.aspx">
+      <publishTime>11/07/2019 17:53:21</publishTime>
+    </File>
+    <File Include="KeyMilestones.aspx">
+      <publishTime>11/07/2019 17:09:43</publishTime>
+    </File>
+    <File Include="Land.aspx">
+      <publishTime>11/14/2019 08:18:45</publishTime>
+    </File>
+    <File Include="Library.aspx">
+      <publishTime>11/07/2019 17:36:27</publishTime>
+    </File>
+    <File Include="LibraryStaff.aspx">
+      <publishTime>11/07/2019 17:36:34</publishTime>
+    </File>
+    <File Include="Login.aspx">
+      <publishTime>10/20/2019 12:15:50</publishTime>
+    </File>
+    <File Include="Logout.aspx">
+      <publishTime>11/08/2017 16:25:00</publishTime>
+    </File>
+    <File Include="NonAcademicStaff.aspx">
+      <publishTime>11/07/2019 17:34:19</publishTime>
+    </File>
+    <File Include="OngoingPrograms.aspx">
+      <publishTime>11/07/2019 17:49:05</publishTime>
+    </File>
+    <File Include="Organogram.aspx">
+      <publishTime>11/07/2019 17:18:59</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>03/09/2019 12:20:59</publishTime>
+    </File>
+    <File Include="Patents.aspx">
+      <publishTime>11/07/2019 17:35:09</publishTime>
+    </File>
+    <File Include="PlantsEquipment.aspx">
+      <publishTime>11/07/2019 17:35:59</publishTime>
+    </File>
+    <File Include="ProgramAccreditation.aspx">
+      <publishTime>08/27/2019 06:05:46</publishTime>
+    </File>
+    <File Include="ProgramQA.aspx">
+      <publishTime>11/07/2019 17:53:27</publishTime>
+    </File>
+    <File Include="Publications.aspx">
+      <publishTime>11/07/2019 17:34:43</publishTime>
+    </File>
+    <File Include="QAMaster.Master">
+      <publishTime>11/07/2019 17:56:43</publishTime>
+    </File>
+    <File Include="QualityAudit.aspx">
+      <publishTime>11/07/2019 17:53:12</publishTime>
+    </File>
+    <File Include="RecreationalFacilities.aspx">
+      <publishTime>11/07/2019 17:35:46</publishTime>
+    </File>
+    <File Include="RequestProgram.aspx">
+      <publishTime>11/07/2019 17:48:59</publishTime>
+    </File>
+    <File Include="Research.aspx">
+      <publishTime>09/13/2019 06:00:36</publishTime>
+    </File>
+    <File Include="Resources.aspx">
+      <publishTime>04/09/2019 04:40:01</publishTime>
+    </File>
+    <File Include="Sample.aspx">
+      <publishTime>06/26/2019 22:51:21</publishTime>
+    </File>
+    <File Include="Sanitation.aspx">
+      <publishTime>11/07/2019 17:36:48</publishTime>
+    </File>
+    <File Include="Schools.aspx">
+      <publishTime>11/07/2019 17:17:54</publishTime>
+    </File>
+    <File Include="Settings.aspx">
+      <publishTime>11/07/2019 17:48:37</publishTime>
+    </File>
+    <File Include="Signup.aspx">
+      <publishTime>04/10/2019 04:57:32</publishTime>
+    </File>
+    <File Include="Site.Master">
+      <publishTime>10/31/2019 21:39:17</publishTime>
+    </File>
+    <File Include="Sponsors.aspx">
+      <publishTime>11/07/2019 17:18:34</publishTime>
+    </File>
+    <File Include="Students.aspx">
+      <publishTime>11/07/2019 17:34:01</publishTime>
+    </File>
+    <File Include="UniversityNiche.aspx">
+      <publishTime>11/07/2019 17:17:39</publishTime>
+    </File>
+    <File Include="UtilityServices.aspx">
+      <publishTime>11/07/2019 17:36:40</publishTime>
+    </File>
+    <File Include="VisionMission.aspx">
+      <publishTime>11/07/2019 17:08:57</publishTime>
+    </File>
+    <File Include="WasteManagement.aspx">
+      <publishTime>11/07/2019 17:35:53</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>11/21/2019 16:19:53</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

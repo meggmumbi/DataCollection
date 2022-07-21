@@ -1,0 +1,449 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="ChooseServiceMaster.Master.cs" Inherits="CicPortal.ChooseServiceMaster" %>
+
+<%@ Import Namespace="CicPortal" %>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+
+
+    <title>The Water Services Regulatory Board</title>
+
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <style>
+        #myProgress {
+            width: 100%;
+            background-color: #ddd;
+        }
+
+        #myBar {
+            width: 10%;
+            height: 30px;
+            background-color: #4CAF50;
+            text-align: center;
+            line-height: 30px;
+            color: white;
+        }
+    </style>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="../vendor/toastr/toastr.min.css">
+    <link rel="stylesheet" href="../vendor/fullcalendar/fullcalendar.css">
+    <script src="../vendor/fullcalendar/lib/moment.min.js"></script>
+    <script src="../vendor/fullcalendar/lib/jquery-ui.custom.min.js"></script>
+    <script src="../vendor/fullcalendar/fullcalendar.min.js"></script>
+    <script src="../vendor/toastr/toastr.min.js"></script>
+    <link rel="stylesheet" href="../vendor/select2/dist/css/select2.min.css">
+    <link rel="stylesheet" href="../vendor/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+    <link href="../dataTables/dataTables.bootstrap.css" rel="stylesheet">
+    <script type="text/javascript" src="js/loader.js"></script>
+
+    <!-- DataTables Responsive CSS -->
+    <link href="../dataTables/dataTables.responsive.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/tonystar/bootstrap-float-label/v3.0.1/dist/bootstrap-float-label.min.css" />
+    <script type="text/javascript">
+        function showToast(mytoastclass, message) {
+            var toastclass = mytoastclass;
+            msg = message;
+            toastr.options.showDuration = 300;
+            toastr.options.hideDuration = 200;
+            toastr.options.timeOut = 5000;
+            toastr.options.extendedTimeOut = 1000;
+            toastr.options.showEasing = "swing";
+            toastr.options.hideEasing = "linear";
+            toastr.options.showMethod = "fadeIn";
+            toastr.options.hideMethod = "fadeOut";
+            toastr.options.tapToDismiss = true;
+
+            $('#toastrOptions').text('Command: toastr[toastclass]("'
+                + msg
+                + ("")
+                + '")\n\ntoastr.options = '
+                + JSON.stringify(toastr.options, null, 2)
+            );
+
+            var $toast = toastr[toastclass](msg, ''); // Wire up an event handler to a button in the toast, if it exists
+        }
+
+    </script>
+    <style>
+        .contributionsList {
+            background-color: #F8F8F8;
+            list-style: none;
+            width: 100%;
+        }
+
+            .contributionsList li:hover {
+                cursor: pointer;
+                background-color: #D3D3D3;
+            }
+
+            .contributionsList li {
+                padding: 9px;
+                border-bottom: 1px solid #e7e7e7;
+                font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+                font-size: 14px;
+                line-height: 1.42857143;
+                color: #333;
+            }
+
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+            padding: 16px;
+            text-align: center;
+            width: 50%;
+            height: 50%;
+            margin-right: 80px;
+        }
+
+        #languages {
+            background-color: #F8F8F8;
+        }
+
+            #languages li {
+                padding: 9px;
+                border-bottom: 1px solid #e7e7e7;
+                font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+                font-size: 14px;
+                line-height: 1.42857143;
+                color: #333;
+            }
+
+        #datepicker {
+            z-index: 9999 !important;
+        }
+
+        @media screen and (max-width:629px) {
+            #fullname {
+                display: none;
+            }
+        }
+
+        @media screen and (min-width:630px) {
+            #shortname {
+                display: none;
+            }
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .fc-day-grid-event .fc-content {
+            white-space: nowrap;
+            overflow: hidden;
+            background-color: #1E83D1;
+            color: #FFFFFF;
+        }
+
+        /* Hide default HTML checkbox */
+        .switch input {
+            display: none;
+        }
+
+        /* The slider */
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+            .slider:before {
+                position: absolute;
+                content: "";
+                height: 26px;
+                width: 26px;
+                left: 4px;
+                bottom: 4px;
+                background-color: white;
+                -webkit-transition: .4s;
+                transition: .4s;
+            }
+
+        input:checked + .slider {
+            background-color: #AB162B;
+        }
+
+        input:focus + .slider {
+            box-shadow: 0 0 1px #AB162B;
+        }
+
+        input:checked + .slider:before {
+            -webkit-transform: translateX(26px);
+            -ms-transform: translateX(26px);
+            transform: translateX(26px);
+        }
+
+        /* Rounded sliders */
+        .slider.round {
+            border-radius: 34px;
+        }
+
+            .slider.round:before {
+                border-radius: 50%;
+            }
+    </style>
+    <link href="images/logo.png" rel="shortcut icon" type="image/x-icon" />
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap-float-label.css" />
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="../vendor/morrisjs/morris.css" rel="stylesheet">
+
+
+    <!-- Custom Fonts -->
+    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+
+
+</head>
+<body>
+    <form runat="server" enctype="multipart/form-data">
+
+        <div id="wrapper">
+
+            <!-- Navigation -->
+            <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0; background-color: #fff; color: #FFFFFF; background-image: url('images/cue-header.png'); background-position:center; height: 146px; background-repeat: no-repeat;">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <%-- <img src="images/cue-header.jpg" height="50" width="1242"/>--%>
+                    <%-- <h4 style="color: #ffffff;">University Education Management Information System (UEMIS)</h4>--%>
+                </div>
+                <!-- /.navbar-header -->
+
+                <ul class="nav navbar-top-links navbar-right">
+
+
+                    <!-- /.dropdown -->
+                    <!-- <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-bell fa-fw" style="color: white;"></i> <i class="fa fa-caret-down" style="color: white;"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-alerts">
+                     
+                        <li class="divider"></li>
+                       
+                  
+               
+                        <li class="divider"></li>
+                       <li>
+                            <a class="text-center" href="Notifications.aspx">
+                                <strong>See All Notifications</strong>
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-alerts 
+               </li> -->
+
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: #f44336;">
+                            <i class="fa fa-user fa-fw"></i><% =Session["Name"] %> <i class="fa fa-caret-down"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <!--<li><a href="Profile.aspx"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        </li>-->
+
+                            <li><a href="Settings.aspx"><i class="fa fa-gear fa-fw"></i>Settings</a>
+                            </li>
+                            <li><a href="help.aspx"><i class="fa fa-user fa-fw"></i>Help</a>
+                            <li class="divider"></li>
+                            <li><a href="Logout.aspx"><i class="fa fa-sign-out fa-fw"></i>Logout</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="navbar-default sidebar" role="navigation">
+                    <div class="sidebar-nav navbar-collapse">
+                        <ul class="nav" id="side-menu">
+                            <li style="background-color: #79bddb; height: 100px; text-align: center; vertical-align: text-top; padding-top: 20px;">
+                                <label><% =Session["Name"] %></label><br />
+                                <label><% =Session["UniversityName"] %></label><br />
+                                <label><%=Session["UserType"] %></label>
+                            </li>
+                            <%
+
+                                if (Convert.ToString(Session["type"]) == "old")
+                                {
+                            %>
+                            <%
+                                if (Convert.ToString(Session["UserType"]) == "VC" || Convert.ToString(Session["UserType"]) == "DVC")
+                                {
+                            %>
+                            <li>
+                                <a href="#"><i class="fa fa-users fa-fw"></i>Manage Users<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li><a href="CreateUser.aspx"><i class="fa fa-user"></i> Create New User</a></li>
+                                    <li><a href="ActiveUsers.aspx"><i class="fa fa-check"></i> Active Users</a></li>
+                                    <li><a href="InactiveUsers.aspx"><i class="fa fa-times"></i> Inactive Users</a></li>
+                                </ul>
+                            </li>
+                            <%
+                                }
+                            %>
+                            <li><a href="ChooseService.aspx"><i class="glyphicon glyphicon-edit"></i>Choose Service</a></li>
+                    <%--        <li>
+                                <a href="#"><i class="fa fa-users fa-fw"></i>University Profile<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li><a href="UniversityGeneralDetails.aspx">University General Details</a></li>
+                                    <li><a href="VisionMission.aspx">Vision, Mission, Aims and Objectives</a></li>
+                                    <li><a href="History.aspx">Brief History</a></li>
+                                    <li><a href="KeyMilestones.aspx">Key Milestones</a></li>
+                                    <li><a href="Affliations.aspx">Affliations and Linkages</a></li>
+                                    <li><a href="UniversityNiche.aspx">Philosophical Basis/Niche of the University</a></li>
+                                    <li><a href="Schools.aspx">Schools/Faculties/Institutes</a></li>
+                                    <li><a href="Departments.aspx">Departments</a></li>
+                                    <li><a href="Sponsors.aspx">Sponsors</a></li>
+                                    <li><a href="Organogram.aspx">Management Organogram</a></li>
+                                    <li><a href="Chancellors.aspx">University Chancellors</a></li>
+                                    <li><a href="UniversityViceChancellor.aspx">University Vice Chancellor</a></li>
+                                </ul>
+                            </li>--%>
+                           <%-- <li><a href="AccreditedPrograms.aspx"><i class="fa fa-check fa-fw"></i>Accredited Programmes</a></li>
+                            <li><a href="Campuses.aspx"><i class="fa fa-building fa-fw"></i>Campuses</a></li>--%>
+                            <li>
+                                <a href="#"><i class="fa fa-desktop"></i> Help Desk           <%--<span class="pull-right-container">
+                                    <small class="label pull-right bg-blue">NEW</small>
+                                </span>--%></a>
+                                <ul class="nav nav-second-level">
+                                    <li><a href="DataCollectionHelpDesk.aspx"><i class="fa fa-plus"></i> New Request</a></li>
+                                    <li><a href="DataCollectionHelpDeskSubmitted.aspx"><i class="fa fa-send"></i> Submitted Requests</a></li>
+                                    <li><a href="DataCollectionHelpDeskResolved.aspx"><i class="fa fa-check"></i> Resolved Requests</a></li>
+                                </ul>
+                            </li>
+                            <%--<li><a href="ComposeEmail.aspx"><i class="fa fa-desktop"></i>Help Desk</a></li>--%>
+
+                            
+                            <li><a href="help.aspx"><i class="fa fa-envelope"></i>Contact Us</a></li>
+                            <li><a href="Downloads/CUE Portal User Guide.pdf"><i class="fa fa-download"></i>Download User Manual</a></li>
+                  <%--          <li>
+                                <a href="#"><i class="fa fa-download"></i>Download University Codes<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li><a href="ProgrammesCodes.aspx"><i class="fa fa-download"></i>Programmes Codes</a></li>
+                                    <li><a href="ProgrammeDomains.aspx"><i class="fa fa-download"></i>Programmes Domain Codes</a></li>
+                                    <li><a href="CampusCodes.aspx"><i class="fa fa-download"></i>Campus Codes</a></li>
+                                    <li><a href="CountiesCodes.aspx"><i class="fa fa-download"></i>County Codes</a></li>
+                                    <li><a href="DisabilitiesCodes.aspx"><i class="fa fa-download"></i>Disability Codes</a></li>
+                                    <li><a href="StaffRanksCodes.aspx"><i class="fa fa-download"></i>Staff Rank Codes</a></li>
+                                    <li><a href="NationalityCodes.aspx"><i class="fa fa-download"></i>Nationality Codes</a></li>
+                                    <li><a href="EthinicityCodes.aspx"><i class="fa fa-download"></i>Ethnicity Codes</a></li>
+                                    <li><a href="OtherSystemCodes.aspx"><i class="fa fa-download"></i>Other System Codes</a></li>
+                                </ul>
+                            </li>--%>
+                            <%
+                                }
+                                else
+                                {
+                            %>
+                            <li><a href="Institution.aspx"><i class="fa fa-check fa-fw"></i>Institution Accreditation</a></li>
+                            <%
+                                }
+                            %>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <div id="page-wrapper">
+                <div class="row">
+                    <br />
+                    <div style="padding-bottom: 10px;">
+                        <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </div>
+                    <div style="background-color: #337ab7; color: #FFFFFF; padding: 10px;">
+                        <p>
+                            <label style="display: inline;">Copyright &copy <%: DateTime.Now.Year %> The Water Services Regulatory Board(Wasreb) All rights reserved.</label>
+                            <label style="display: inline; color: #FFFFFF;" class="pull-right;"><a href="http://www.dynasoft.co.ke" class="pull-right" runat="server" style="color: #FFFFFF;">Design and Developed by Dynasoft Business Solutions Ltd</a></label>
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+            <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+            <script src="../vendor/metisMenu/metisMenu.min.js"></script>
+            <script src="../vendor/raphael/raphael.min.js"></script>
+            <script src="../vendor/morrisjs/morris.min.js"></script>
+            <script src="../data/morris-data.js"></script>
+            <script src="../dist/js/sb-admin-2.js"></script>
+            <script src="../vendor/flot/excanvas.min.js"></script>
+            <script src="../vendor/flot/jquery.flot.js"></script>
+            <script src="../vendor/flot/jquery.flot.pie.js"></script>
+            <script src="../vendor/flot/jquery.flot.resize.js"></script>
+            <script src="../vendor/flot/jquery.flot.time.js"></script>
+            <script src="../vendor/select2/dist/js/select2.full.min.js"></script>
+            <script src="../vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+            <script src="../vendor/flot-tooltip/jquery.flot.tooltip.min.js"></script>
+            <script>
+                $(document).ready(function () {
+                    $('.select2').select2();
+                    $('.bootstrapdatepicker').datepicker({
+                        autoclose: true, format: 'dd/mm/yyyy'
+                    });
+                    $('.dataTable2').DataTable({
+                        responsive: true
+                    });
+
+                });
+            </script>
+        </div>
+    </form>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="fullcalendar/fullcalendar.css">
+    <script src="fullcalendar/lib/moment.min.js"></script>
+    <script src="fullcalendar/lib/jquery-ui.custom.min.js"></script>
+    <script src="fullcalendar/fullcalendar.min.js"></script>
+    <script src="../dataTables/jquery.dataTables.min.js"></script>
+    <script src="../dataTables/dataTables.bootstrap.min.js"></script>
+    <script src=" https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.flash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.print.min.js"></script>
+    <script src="https://cdn.datatables.net/select/1.3.0/js/dataTables.select.min.js"></script>
+    <script type="text/javascript" src="http://oss.sheetjs.com/js-xlsx/xlsx.full.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="js/CustomJs.js"></script>
+    <!-- Sweet Alert Js -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+</body>
+</html>
